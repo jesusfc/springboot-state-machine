@@ -1,8 +1,5 @@
-HELP.md
-target/
+/target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -21,14 +18,22 @@ target/
 
 ### NetBeans ###
 /nbproject/private/
+/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+/.jpb/
 
-### VS Code ###
-.vscode/
-/out/
+###
+/temp
+.mvn/
+mvnw
+mvnw.cmd
+
+
+\.DS_Store
+/machinet.conf
+qodana.sarif.json
+qodana.yaml
+
