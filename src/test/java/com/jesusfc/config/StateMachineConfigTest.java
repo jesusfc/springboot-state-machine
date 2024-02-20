@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
+import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ class StateMachineConfigTest {
     @Test
     void testConfigurePaymentStateMachine() {
         StateMachine<PaymentState, PaymentEvent> stateMachine = stateMachineFactory.getStateMachine(UUID.randomUUID());
-        stateMachine.start();
+        Mono<Void> voidMono = stateMachine.startReactively();
 
         System.out.println(stateMachine.getState().toString());
     }
