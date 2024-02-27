@@ -28,10 +28,46 @@ class StateMachineConfigTest {
 
     @Test
     void testConfigurePaymentStateMachine() {
-        StateMachine<PaymentState, PaymentEvent> stateMachine = stateMachineFactory.getStateMachine(UUID.randomUUID());
+
+        StateMachine<PaymentState, PaymentEvent> sm = stateMachineFactory.getStateMachine(UUID.randomUUID());
+
+
+        sm.start();
+
+        System.out.println(sm.getState().toString());
+
+        sm.sendEvent(PaymentEvent.PRE_AUTHORIZE);
+
+        System.out.println(sm.getState().toString());
+
+        sm.sendEvent(PaymentEvent.PRE_AUTH_APPROVED);
+
+        System.out.println(sm.getState().toString());
+
+        sm.sendEvent(PaymentEvent.PRE_AUTH_DECLINED);
+
+        System.out.println(sm.getState().toString());
+
+        /*
         Mono<Void> voidMono = stateMachine.startReactively();
 
+        System.out.println("Mono ----------> " + voidMono.toString());
+
+
         System.out.println(stateMachine.getState().toString());
+
+        stateMachine.sendEvent(PaymentEvent.PRE_AUTHORIZE);
+
+        System.out.println(stateMachine.getState().toString());
+
+        stateMachine.sendEvent(PaymentEvent.PRE_AUTH_APPROVED);
+
+        System.out.println(stateMachine.getState().toString());
+
+        stateMachine.sendEvent(PaymentEvent.PRE_AUTH_DECLINED);
+
+        System.out.println(stateMachine.getState().toString());
+*/
     }
 
 }
